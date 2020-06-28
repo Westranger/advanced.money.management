@@ -51,6 +51,13 @@ public class DateUtilTest {
 	}
 
 	@Test
+	public void testLeapYear() {
+		final Date date = DateUtil.createDate(29, Calendar.FEBRUARY, 2020);
+		assertEquals(1582934400000l, date.getTime());
+		assertEquals("29 Feb 2020 00:00:00 GMT", date.toGMTString());
+	}
+
+	@Test
 	public void testEquals() {
 		final Date dateA = DateUtil.createDate(22, Calendar.JANUARY, 2011);
 		final Date dateB = DateUtil.createDate(22, Calendar.JANUARY, 2011);
