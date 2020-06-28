@@ -16,6 +16,7 @@ public final class WeeklyBookingTest {
     private DateRange dateRange;
     private BookingType type;
     private double value;
+    private DateExclusion de;
 
     @Before
     public void setUp() throws Exception {
@@ -25,26 +26,32 @@ public final class WeeklyBookingTest {
         Date dateEnd = DateUtil.createDate(1, Calendar.JANUARY, 2021);
         dateRange = new DateRange(dateStart.getTime(), dateEnd.getTime());
         description = "JUnit Booking";
+        de = new DateExclusionImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeRepetition() {
-        Booking booking = new WeeklyBooking(-1, 10, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new WeeklyBooking(-1, 10, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeDayOfWeek() {
-        Booking booking = new WeeklyBooking(1, -5, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new WeeklyBooking(1, -5, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorTooLargeDayOfWeek() {
-        Booking booking = new WeeklyBooking(1, 100, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new WeeklyBooking(1, 100, this.value, this.type, this.dateRange, this.description, this.de);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructorNullDateExclusion() {
+        Booking booking = new WeeklyBooking(1, 100, this.value, this.type, this.dateRange, this.description, null);
     }
 
     @Test
     public void testConstructorDayOfWeek() {
-        WeeklyBooking booking = new WeeklyBooking(1, 6, this.value, this.type, this.dateRange, this.description);
+        WeeklyBooking booking = new WeeklyBooking(1, 6, this.value, this.type, this.dateRange, this.description, this.de);
         assertEquals(1, booking.getRepetition());
         assertEquals(6, booking.getDayOfWeek());
     }

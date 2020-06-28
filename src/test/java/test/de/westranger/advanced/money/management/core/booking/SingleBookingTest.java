@@ -1,9 +1,6 @@
 package test.de.westranger.advanced.money.management.core.booking;
 
-import de.westranger.advanced.money.management.core.booking.Booking;
-import de.westranger.advanced.money.management.core.booking.BookingType;
-import de.westranger.advanced.money.management.core.booking.DateRange;
-import de.westranger.advanced.money.management.core.booking.SingleBooking;
+import de.westranger.advanced.money.management.core.booking.*;
 import de.westranger.advanced.money.management.core.util.DateUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +18,7 @@ public final class SingleBookingTest {
     private BookingType type;
     private double value;
     private Date date;
+    private DateExclusion de;
 
     @Before
     public void setUp() throws Exception {
@@ -32,6 +30,7 @@ public final class SingleBookingTest {
         Date dateEnd = DateUtil.createDate(1, Calendar.JANUARY, 2021);
         dateRange = new DateRange(dateStart.getTime(), dateEnd.getTime());
         description = "JUnit Booking";
+        de = new DateExclusionImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -88,5 +87,6 @@ public final class SingleBookingTest {
         assertEquals(this.type, booking.getType());
         assertEquals(this.dateRange, booking.getDateRange());
         assertEquals(this.description, booking.getDescription());
+        assertEquals(this.de, booking.getDateExclusion());
     }
 }

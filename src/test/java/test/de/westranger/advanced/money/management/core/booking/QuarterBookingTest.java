@@ -17,6 +17,7 @@ public class QuarterBookingTest {
     private BookingType type;
     private double value;
     private MonthOfQuarter moq;
+    private DateExclusion de;
 
     @Before
     public void setUp() throws Exception {
@@ -27,16 +28,17 @@ public class QuarterBookingTest {
         dateRange = new DateRange(dateStart.getTime(), dateEnd.getTime());
         description = "JUnit Booking";
         moq = MonthOfQuarter.First;
+        de = new DateExclusionImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorMonthOfQuarterNull() {
-        Booking booking = new QuarterBooking(null, 5, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new QuarterBooking(null, 5, this.value, this.type, this.dateRange, this.description, de);
     }
 
     @Test
     public void testConstructorMonthOfQuarter() {
-        QuarterBooking booking = new QuarterBooking(this.moq, 5, this.value, this.type, this.dateRange, this.description);
+        QuarterBooking booking = new QuarterBooking(this.moq, 5, this.value, this.type, this.dateRange, this.description, de);
         assertEquals(MonthOfQuarter.First, booking.getMonthOfQuarter());
         assertEquals(1, booking.getRepetition());
     }

@@ -6,6 +6,7 @@ public abstract class Booking {
     protected final BookingType type;
     protected final DateRange dateRange;
     protected final String description;
+    protected final DateExclusion dateExclusion;
 
     public Booking(final int repetition, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
         if (repetition < 1) {
@@ -13,15 +14,15 @@ public abstract class Booking {
         }
 
         if (type == null) {
-            throw new IllegalArgumentException("booking type is null");
+            throw new IllegalArgumentException("Booking type is null");
         }
 
         if (range == null) {
-            throw new IllegalArgumentException("DateRange for booking is is null");
+            throw new IllegalArgumentException("DateRange for Booking is is null");
         }
 
         if (description == null) {
-            throw new IllegalArgumentException("booking description is null");
+            throw new IllegalArgumentException("Booking description is null");
         }
 
         if (!Double.isFinite(value) || Double.isNaN(value)) {
@@ -37,6 +38,7 @@ public abstract class Booking {
         this.type = type;
         this.dateRange = range;
         this.description = description;
+        this.dateExclusion = dateExclusion;
     }
 
     public double getValue() {

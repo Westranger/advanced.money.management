@@ -22,6 +22,7 @@ public final class MonthlyBookingDayOfWeekTest {
     private Numerator num;
     private DayOfWeek dow;
     private MonthOfQuarter moq;
+    private DateExclusion de;
 
     @Before
     public void setUp() throws Exception {
@@ -34,16 +35,17 @@ public final class MonthlyBookingDayOfWeekTest {
         num = Numerator.First;
         dow = DayOfWeek.Monday;
         moq = MonthOfQuarter.Second;
+        de = new DateExclusionImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorMonthOfQuarterNull() {
-        Booking booking = new QuarterBookingDayOfWeek(null, this.num, this.dow, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new QuarterBookingDayOfWeek(null, this.num, this.dow, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test
     public void testConstructorDayOfMonth() {
-        QuarterBookingDayOfWeek booking = new QuarterBookingDayOfWeek(this.moq, this.num, this.dow, this.value, this.type, this.dateRange, this.description);
+        QuarterBookingDayOfWeek booking = new QuarterBookingDayOfWeek(this.moq, this.num, this.dow, this.value, this.type, this.dateRange, this.description, this.de);
         assertEquals(MonthOfQuarter.Second, booking.getMonthOfQuarter());
     }
 }

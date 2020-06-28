@@ -16,6 +16,7 @@ public final class MonthlyBookingTest {
     private DateRange dateRange;
     private BookingType type;
     private double value;
+    private DateExclusion de;
 
     @Before
     public void setUp() throws Exception {
@@ -25,26 +26,27 @@ public final class MonthlyBookingTest {
         Date dateEnd = DateUtil.createDate(1, Calendar.JANUARY, 2021);
         dateRange = new DateRange(dateStart.getTime(), dateEnd.getTime());
         description = "JUnit Booking";
+        de = new DateExclusionImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeRepetition() {
-        Booking booking = new MonthlyBooking(-1, 10, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new MonthlyBooking(-1, 10, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeDayOfMonth() {
-        Booking booking = new MonthlyBooking(1, -5, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new MonthlyBooking(1, -5, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorTooLargeDayOfMonth() {
-        Booking booking = new MonthlyBooking(1, 100, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new MonthlyBooking(1, 100, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test
     public void testConstructorDayOfMonth() {
-        MonthlyBooking booking = new MonthlyBooking(1, 5, this.value, this.type, this.dateRange, this.description);
+        MonthlyBooking booking = new MonthlyBooking(1, 5, this.value, this.type, this.dateRange, this.description, this.de);
         assertEquals(1, booking.getRepetition());
         assertEquals(5, booking.getDayOfMonth());
     }

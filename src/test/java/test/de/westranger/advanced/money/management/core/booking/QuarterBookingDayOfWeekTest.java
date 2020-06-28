@@ -1,9 +1,6 @@
 package test.de.westranger.advanced.money.management.core.booking;
 
-import de.westranger.advanced.money.management.core.booking.Booking;
-import de.westranger.advanced.money.management.core.booking.BookingType;
-import de.westranger.advanced.money.management.core.booking.DateRange;
-import de.westranger.advanced.money.management.core.booking.MonthlyBookingDayOfWeek;
+import de.westranger.advanced.money.management.core.booking.*;
 import de.westranger.advanced.money.management.core.booking.enums.DayOfWeek;
 import de.westranger.advanced.money.management.core.booking.enums.Numerator;
 import de.westranger.advanced.money.management.core.util.DateUtil;
@@ -22,6 +19,7 @@ public class QuarterBookingDayOfWeekTest {
     private double value;
     private Numerator num;
     private DayOfWeek dow;
+    private DateExclusion de;
 
     @Before
     public void setUp() throws Exception {
@@ -33,21 +31,22 @@ public class QuarterBookingDayOfWeekTest {
         description = "JUnit Booking";
         num = Numerator.First;
         dow = DayOfWeek.Monday;
+        de = new DateExclusionImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNumeratorNull() {
-        Booking booking = new MonthlyBookingDayOfWeek(null, this.dow, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new MonthlyBookingDayOfWeek(null, this.dow, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorDayOfWeekNull() {
-        Booking booking = new MonthlyBookingDayOfWeek(this.num, null, this.value, this.type, this.dateRange, this.description);
+        Booking booking = new MonthlyBookingDayOfWeek(this.num, null, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test
     public void testConstructorDayOfMonth() {
-        MonthlyBookingDayOfWeek booking = new MonthlyBookingDayOfWeek(this.num, this.dow, this.value, this.type, this.dateRange, this.description);
+        MonthlyBookingDayOfWeek booking = new MonthlyBookingDayOfWeek(this.num, this.dow, this.value, this.type, this.dateRange, this.description, this.de);
         assertEquals(Numerator.First, booking.getNumerator());
         assertEquals(DayOfWeek.Monday, booking.getDayOfWeek());
     }
