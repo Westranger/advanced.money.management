@@ -38,5 +38,6 @@ public class QuarterBookingTest {
     public void testConstructorMonthOfQuarter() {
         QuarterBooking booking = new QuarterBooking(this.moq, 5, this.value, this.type, this.dateRange, this.description);
         assertEquals(MonthOfQuarter.First, booking.getMonthOfQuarter());
+        assertEquals(1, booking.getRepetition());
     }
 }
