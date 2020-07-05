@@ -1,6 +1,9 @@
 package test.de.westranger.advanced.money.management.core.booking;
 
 import de.westranger.advanced.money.management.core.booking.*;
+import de.westranger.advanced.money.management.core.booking.enums.DayOfWeek;
+import de.westranger.advanced.money.management.core.booking.enums.MonthOfQuarter;
+import de.westranger.advanced.money.management.core.booking.enums.Numerator;
 import de.westranger.advanced.money.management.core.util.DateUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,12 +13,15 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-public final class MonthlyBookingTest {
+public final class MonthlyBookingDayOfWeekTest {
 
     private String description;
     private DateRange dateRange;
     private BookingType type;
     private double value;
+    private Numerator num;
+    private DayOfWeek dow;
+    private MonthOfQuarter moq;
 
     @Before
     public void setUp() throws Exception {
@@ -25,27 +31,19 @@ public final class MonthlyBookingTest {
         Date dateEnd = DateUtil.createDate(1, Calendar.JANUARY, 2021);
         dateRange = new DateRange(dateStart.getTime(), dateEnd.getTime());
         description = "JUnit Booking";
+        num = Numerator.First;
+        dow = DayOfWeek.Monday;
+        moq = MonthOfQuarter.Second;
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testConstructorNegativeRepetition() {
-        Booking booking = new MonthlyBooking(-1, 10, this.value, this.type, this.dateRange, this.description);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testConstructorNegativeDayOfMonth() {
-        Booking booking = new MonthlyBooking(1, -5, this.value, this.type, this.dateRange, this.description);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testConstructorTooLargeDayOfMonth() {
-        Booking booking = new MonthlyBooking(1, 100, this.value, this.type, this.dateRange, this.description);
+    public void testConstructorMonthOfQuarterNull() {
+        Booking booking = new QuarterBookingDayOfWeek(null, this.num, this.dow, this.value, this.type, this.dateRange, this.description);
     }
 
     @Test
     public void testConstructorDayOfMonth() {
-        MonthlyBooking booking = new MonthlyBooking(1, 5, this.value, this.type, this.dateRange, this.description);
-        assertEquals(1, booking.getRepetition());
-        assertEquals(5, booking.getDayOfMonth());
+        QuarterBookingDayOfWeek booking = new QuarterBookingDayOfWeek(this.moq, this.num, this.dow, this.value, this.type, this.dateRange, this.description);
+        assertEquals(MonthOfQuarter.Second, booking.getMonthOfQuarter());
     }
 }
