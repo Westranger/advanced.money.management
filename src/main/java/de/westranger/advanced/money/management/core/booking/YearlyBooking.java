@@ -29,7 +29,7 @@ public final class YearlyBooking extends Booking {
         return dayOfMonth;
     }
 
-    public MonthOfYear getMoy() {
+    public MonthOfYear getMonthOfYear() {
         return moy;
     }
 
