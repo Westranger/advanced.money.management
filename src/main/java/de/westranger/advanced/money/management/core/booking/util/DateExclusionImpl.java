@@ -1,4 +1,4 @@
-package de.westranger.advanced.money.management.core.booking;
+package de.westranger.advanced.money.management.core.booking.util;
 
 import java.util.HashSet;
 import java.util.Set;

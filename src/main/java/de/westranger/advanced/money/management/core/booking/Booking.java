@@ -1,18 +1,21 @@
 package de.westranger.advanced.money.management.core.booking;
 
+import de.westranger.advanced.money.management.core.booking.enums.BookingType;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
+import de.westranger.advanced.money.management.core.booking.util.DateRange;
+import de.westranger.advanced.money.management.core.booking.util.Triple;
+
+import java.util.Date;
+import java.util.List;
+
 public abstract class Booking {
-    protected final int repetition;
     protected final double value;
     protected final BookingType type;
     protected final DateRange dateRange;
     protected final String description;
     protected final DateExclusion dateExclusion;
 
-    public Booking(final int repetition, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
-        if (repetition < 1) {
-            throw new IllegalArgumentException("repetition out of range: 1 <= " + repetition);
-        }
-
+    public Booking(final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
         if (type == null) {
             throw new IllegalArgumentException("Booking type is null");
         }
@@ -33,7 +36,6 @@ public abstract class Booking {
             throw new IllegalArgumentException("Booking DateExclusion is null");
         }
 
-        this.repetition = repetition;
         this.value = value;
         this.type = type;
         this.dateRange = range;
@@ -61,7 +63,5 @@ public abstract class Booking {
         return dateExclusion;
     }
 
-    public int getRepetition() {
-        return repetition;
-    }
+    public abstract List<Triple<Date, BookingType, Double>> inflate();
 }

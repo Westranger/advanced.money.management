@@ -2,10 +2,12 @@ package de.westranger.advanced.money.management.core.booking;
 
 import de.westranger.advanced.money.management.core.booking.enums.DayOfWeek;
 import de.westranger.advanced.money.management.core.booking.enums.Numerator;
+import de.westranger.advanced.money.management.core.booking.enums.BookingType;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
+import de.westranger.advanced.money.management.core.booking.util.DateRange;
+import de.westranger.advanced.money.management.core.booking.util.Triple;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MonthlyBookingDayOfWeek extends Booking {
 
@@ -15,7 +17,7 @@ public class MonthlyBookingDayOfWeek extends Booking {
     private final DayOfWeek dow;
 
     public MonthlyBookingDayOfWeek(final Numerator num, final DayOfWeek dow, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
-        super(1, value, type, range, description, dateExclusion);
+        super(value, type, range, description, dateExclusion);
 
         if (!this.acceptedValues.contains(num)) {
             throw new IllegalArgumentException("unknown numerator " + num);
@@ -35,5 +37,10 @@ public class MonthlyBookingDayOfWeek extends Booking {
 
     public DayOfWeek getDayOfWeek() {
         return dow;
+    }
+
+    @Override
+    public List<Triple<Date, BookingType, Double>> inflate() {
+        throw new RuntimeException("Not yet Implemented");
     }
 }

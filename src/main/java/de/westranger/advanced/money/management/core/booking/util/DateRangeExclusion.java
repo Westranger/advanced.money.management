@@ -1,4 +1,4 @@
-package de.westranger.advanced.money.management.core.booking;
+package de.westranger.advanced.money.management.core.booking.util;
 
 public final class DateRangeExclusion extends DateExclusion {
 

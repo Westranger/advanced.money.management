@@ -1,8 +1,8 @@
-package test.de.westranger.advanced.money.management.core.booking;
+package test.de.westranger.advanced.money.management.core.booking.util;
 
-import de.westranger.advanced.money.management.core.booking.DateExclusion;
-import de.westranger.advanced.money.management.core.booking.DateExclusionImpl;
-import de.westranger.advanced.money.management.core.booking.DateRangeExclusion;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusionImpl;
+import de.westranger.advanced.money.management.core.booking.util.DateRangeExclusion;
 import de.westranger.advanced.money.management.core.util.DateUtil;
 import org.junit.Test;
 

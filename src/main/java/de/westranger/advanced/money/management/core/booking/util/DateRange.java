@@ -1,4 +1,4 @@
-package de.westranger.advanced.money.management.core.booking;
+package de.westranger.advanced.money.management.core.booking.util;
 
 import java.util.Date;
 
@@ -33,5 +33,9 @@ public final class DateRange {
     @Override
     public String toString() {
         return "DateRange(from:" + (new Date(this.startDate)) + " to:" + (new Date(this.startDate)) + ")";
+    }
+
+    public static DateRange fromRepetition(final long startDate, final int repetition){
+        return null;
     }
 }

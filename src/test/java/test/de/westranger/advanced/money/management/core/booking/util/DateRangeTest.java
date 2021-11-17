@@ -1,11 +1,11 @@
-package test.de.westranger.advanced.money.management.core.booking;
+package test.de.westranger.advanced.money.management.core.booking.util;
 
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import de.westranger.advanced.money.management.core.booking.DateRange;
+import de.westranger.advanced.money.management.core.booking.util.DateRange;
 import de.westranger.advanced.money.management.core.util.DateUtil;
 import org.junit.Test;
 

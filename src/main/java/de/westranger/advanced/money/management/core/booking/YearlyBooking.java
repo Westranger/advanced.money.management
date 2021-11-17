@@ -1,5 +1,6 @@
 package de.westranger.advanced.money.management.core.booking;
 
+import de.westranger.advanced.money.management.core.booking.enums.MonthOfYear;
 import de.westranger.advanced.money.management.core.booking.enums.BookingType;
 import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
 import de.westranger.advanced.money.management.core.booking.util.DateRange;
@@ -8,11 +9,12 @@ import de.westranger.advanced.money.management.core.booking.util.Triple;
 import java.util.Date;
 import java.util.List;
 
-public class MonthlyBooking extends Booking {
+public final class YearlyBooking extends Booking {
 
     private final int dayOfMonth;
+    private final MonthOfYear moy;
 
-    public MonthlyBooking(final int dayOfMonth, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
+    public YearlyBooking(final MonthOfYear moy, final int dayOfMonth, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
         super(value, type, range, description, dateExclusion);
 
         if (dayOfMonth < 1 || dayOfMonth > 28) {
@@ -20,10 +22,15 @@ public class MonthlyBooking extends Booking {
         }
 
         this.dayOfMonth = dayOfMonth;
+        this.moy = moy;
     }
 
     public int getDayOfMonth() {
         return dayOfMonth;
+    }
+
+    public MonthOfYear getMoy() {
+        return moy;
     }
 
     @Override

@@ -2,6 +2,10 @@ package test.de.westranger.advanced.money.management.core.booking;
 
 import de.westranger.advanced.money.management.core.booking.*;
 import de.westranger.advanced.money.management.core.booking.enums.MonthOfQuarter;
+import de.westranger.advanced.money.management.core.booking.enums.BookingType;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusionImpl;
+import de.westranger.advanced.money.management.core.booking.util.DateRange;
 import de.westranger.advanced.money.management.core.util.DateUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +44,5 @@ public class QuarterBookingTest {
     public void testConstructorMonthOfQuarter() {
         QuarterBooking booking = new QuarterBooking(this.moq, 5, this.value, this.type, this.dateRange, this.description, de);
         assertEquals(MonthOfQuarter.First, booking.getMonthOfQuarter());
-        assertEquals(1, booking.getRepetition());
     }
 }

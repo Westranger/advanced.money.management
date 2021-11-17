@@ -1,6 +1,10 @@
 package test.de.westranger.advanced.money.management.core.booking;
 
 import de.westranger.advanced.money.management.core.booking.*;
+import de.westranger.advanced.money.management.core.booking.enums.BookingType;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
+import de.westranger.advanced.money.management.core.booking.util.DateExclusionImpl;
+import de.westranger.advanced.money.management.core.booking.util.DateRange;
 import de.westranger.advanced.money.management.core.util.DateUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,29 +34,23 @@ public final class WeeklyBookingTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testConstructorNegativeRepetition() {
-        Booking booking = new WeeklyBooking(-1, 10, this.value, this.type, this.dateRange, this.description, this.de);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeDayOfWeek() {
-        Booking booking = new WeeklyBooking(1, -5, this.value, this.type, this.dateRange, this.description, this.de);
+        Booking booking = new WeeklyBooking( -5, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorTooLargeDayOfWeek() {
-        Booking booking = new WeeklyBooking(1, 100, this.value, this.type, this.dateRange, this.description, this.de);
+        Booking booking = new WeeklyBooking(100, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNullDateExclusion() {
-        Booking booking = new WeeklyBooking(1, 100, this.value, this.type, this.dateRange, this.description, null);
+        Booking booking = new WeeklyBooking( 100, this.value, this.type, this.dateRange, this.description, null);
     }
 
     @Test
     public void testConstructorDayOfWeek() {
-        WeeklyBooking booking = new WeeklyBooking(1, 6, this.value, this.type, this.dateRange, this.description, this.de);
-        assertEquals(1, booking.getRepetition());
+        WeeklyBooking booking = new WeeklyBooking( 6, this.value, this.type, this.dateRange, this.description, this.de);
         assertEquals(6, booking.getDayOfWeek());
     }
 }
