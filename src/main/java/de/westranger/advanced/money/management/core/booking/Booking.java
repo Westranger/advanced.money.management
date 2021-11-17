@@ -13,9 +13,9 @@ public abstract class Booking {
     protected final BookingType type;
     protected final DateRange dateRange;
     protected final String description;
-    protected final DateExclusion dateExclusion;
+    protected DateExclusion dateExclusion;
 
-    public Booking(final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
+    public Booking(final double value, final BookingType type, final DateRange range, final String description) {
         if (type == null) {
             throw new IllegalArgumentException("Booking type is null");
         }
@@ -32,14 +32,19 @@ public abstract class Booking {
             throw new IllegalArgumentException("Booking value is " + value);
         }
 
-        if (dateExclusion == null) {
-            throw new IllegalArgumentException("Booking DateExclusion is null");
-        }
-
         this.value = value;
         this.type = type;
         this.dateRange = range;
         this.description = description;
+    }
+
+    public Booking(final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
+        this(value,type,range,description);
+
+        if (dateExclusion == null) {
+            throw new IllegalArgumentException("Booking DateExclusion is null");
+        }
+
         this.dateExclusion = dateExclusion;
     }
 
