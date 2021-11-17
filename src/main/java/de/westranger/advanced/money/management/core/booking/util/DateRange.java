@@ -24,10 +24,7 @@ public final class DateRange {
     }
 
     public boolean isBetween(final long date) {
-        if (date >= this.startDate && date <= this.endDate) {
-            return true;
-        }
-        return false;
+        return date >= this.startDate && date <= this.endDate;
     }
 
     @Override
@@ -35,7 +32,7 @@ public final class DateRange {
         return "DateRange(from:" + (new Date(this.startDate)) + " to:" + (new Date(this.startDate)) + ")";
     }
 
-    public static DateRange fromRepetition(final long startDate, final int repetition){
-        return null;
+    public static DateRange fromRepetition(final long startDate, final int repetition) {
+        throw new RuntimeException("Not yet Implemented");
     }
 }

@@ -1,17 +1,15 @@
 package test.de.westranger.advanced.money.management.core.util;
 
-import static org.junit.Assert.*;
+import de.westranger.advanced.money.management.core.util.DateComparator;
+import de.westranger.advanced.money.management.core.util.DateUtil;
+import org.junit.Test;
 
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.Test;
-
-import de.westranger.advanced.money.management.core.util.DateComparator;
-import de.westranger.advanced.money.management.core.util.DateUtil;
+import static org.junit.Assert.assertEquals;
 
 public class DateComparatorTest {
 
@@ -23,14 +21,13 @@ public class DateComparatorTest {
         final Date dateD = DateUtil.createDate(1, Calendar.APRIL, 2011);
         final Date dateE = DateUtil.createDate(1, Calendar.JANUARY, 2011);
 
-        final List<Date> lst = new LinkedList<Date>();
+        final List<Date> lst = new LinkedList<>();
         lst.add(dateA);
         lst.add(dateB);
         lst.add(dateC);
         lst.add(dateD);
         lst.add(dateE);
-
-        Collections.sort(lst, new DateComparator());
+        lst.sort(new DateComparator());
 
         assertEquals(dateA, lst.get(0));
         assertEquals(dateE, lst.get(1));

@@ -39,15 +39,15 @@ public class DateUtilTest {
     @Test
     public void testCreateDate() {
         final Date date = DateUtil.createDate(22, Calendar.JANUARY, 2011);
-        assertEquals(1295654400000l, date.getTime());
-        assertEquals("22 Jan 2011 00:00:00 GMT", date.toGMTString());
+        assertEquals(1295654400000L, date.getTime());
+        assertEquals("22 Jan 2011 00:00:00 GMT", date.toString());
     }
 
 	@Test
 	public void testLeapYear() {
 		final Date date = DateUtil.createDate(29, Calendar.FEBRUARY, 2020);
-		assertEquals(1582934400000l, date.getTime());
-		assertEquals("29 Feb 2020 00:00:00 GMT", date.toGMTString());
+		assertEquals(1582934400000L, date.getTime());
+		assertEquals("29 Feb 2020 00:00:00 GMT", date.toString());
 	}
 
 	@Test

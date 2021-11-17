@@ -12,13 +12,17 @@ import java.util.*;
 
 public final class QuarterBookingDayOfWeek extends MonthlyBookingDayOfWeek {
 
-    private final Set<MonthOfQuarter> acceptedMonths = new HashSet<>(Arrays.asList(MonthOfQuarter.First, MonthOfQuarter.Second, MonthOfQuarter.Third, MonthOfQuarter.Fourth));
     private final MonthOfQuarter moq;
 
     public QuarterBookingDayOfWeek(final MonthOfQuarter moq, final Numerator num, final DayOfWeek dow, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
         super(num, dow, value, type, range, description, dateExclusion);
 
-        if (!this.acceptedMonths.contains(moq)) {
+        if (moq == null) {
+            throw new IllegalArgumentException("Booking MonthOfQuarter is null");
+        }
+
+        final Set<MonthOfQuarter> acceptedMonths = new HashSet<>(Arrays.asList(MonthOfQuarter.First, MonthOfQuarter.Second, MonthOfQuarter.Third, MonthOfQuarter.Fourth));
+        if (!acceptedMonths.contains(moq)) {
             throw new IllegalArgumentException("unknown month of quarter " + moq);
         }
 

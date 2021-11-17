@@ -24,7 +24,7 @@ public class QuarterBookingTest {
     private DateExclusion de;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         value = 10.00;
         type = BookingType.Expense;
         Date dateStart = DateUtil.createDate(1, Calendar.JANUARY, 2019);

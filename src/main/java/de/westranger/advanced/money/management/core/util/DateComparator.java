@@ -13,7 +13,7 @@ public final class DateComparator implements Comparator<Date>, Serializable {
     }
 
     private Date normalize(final Date date) {
-        if(date == null){
+        if (date == null) {
             throw new IllegalArgumentException("parameter is null");
         }
 

@@ -25,7 +25,7 @@ public final class SingleBookingTest {
     private DateExclusion de;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         repetition = 5;
         date = DateUtil.createDate(1, Calendar.JANUARY, 2020);
         value = 10.00;

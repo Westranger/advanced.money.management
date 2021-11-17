@@ -39,7 +39,7 @@ public abstract class Booking {
     }
 
     public Booking(final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
-        this(value,type,range,description);
+        this(value, type, range, description);
 
         if (dateExclusion == null) {
             throw new IllegalArgumentException("Booking DateExclusion is null");

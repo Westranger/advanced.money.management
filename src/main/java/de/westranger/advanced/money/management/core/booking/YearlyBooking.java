@@ -17,6 +17,10 @@ public final class YearlyBooking extends Booking {
     public YearlyBooking(final MonthOfYear moy, final int dayOfMonth, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
         super(value, type, range, description, dateExclusion);
 
+        if (moy == null) {
+            throw new IllegalArgumentException("Booking MonthOfYear is null");
+        }
+
         if (dayOfMonth < 1 || dayOfMonth > 28) {
             throw new IllegalArgumentException("day of month out of range 1 <= x <= 28 but was " + dayOfMonth);
         }

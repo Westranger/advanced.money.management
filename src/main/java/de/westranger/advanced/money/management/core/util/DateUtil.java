@@ -71,7 +71,7 @@ public final class DateUtil {
     }
 
     public static Date normalize(final Date date) {
-        if(date == null){
+        if (date == null) {
             throw new IllegalArgumentException("parameter is null");
         }
 

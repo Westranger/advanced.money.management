@@ -10,13 +10,17 @@ import java.util.*;
 
 public final class QuarterBooking extends MonthlyBooking {
 
-    private final Set<MonthOfQuarter> acceptedMonths = new HashSet<>(Arrays.asList(MonthOfQuarter.First, MonthOfQuarter.Second, MonthOfQuarter.Third, MonthOfQuarter.Fourth));
     private final MonthOfQuarter moq;
 
     public QuarterBooking(final MonthOfQuarter moq, final int dayOfMonth, final double value, final BookingType type, final DateRange range, final String description, final DateExclusion dateExclusion) {
         super(dayOfMonth, value, type, range, description, dateExclusion);
 
-        if (!this.acceptedMonths.contains(moq)) {
+        if (moq == null) {
+            throw new IllegalArgumentException("Booking MonthOfQuarter is null");
+        }
+
+        final Set<MonthOfQuarter> acceptedMonths = new HashSet<>(Arrays.asList(MonthOfQuarter.First, MonthOfQuarter.Second, MonthOfQuarter.Third, MonthOfQuarter.Fourth));
+        if (!acceptedMonths.contains(moq)) {
             throw new IllegalArgumentException("unknown  month of quarter " + moq);
         }
 
