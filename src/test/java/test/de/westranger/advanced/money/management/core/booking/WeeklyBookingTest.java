@@ -35,7 +35,7 @@ public final class WeeklyBookingTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeDayOfWeek() {
-        Booking booking = new WeeklyBooking( -5, this.value, this.type, this.dateRange, this.description, this.de);
+        Booking booking = new WeeklyBooking(-5, this.value, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -45,12 +45,12 @@ public final class WeeklyBookingTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNullDateExclusion() {
-        Booking booking = new WeeklyBooking( 100, this.value, this.type, this.dateRange, this.description, null);
+        Booking booking = new WeeklyBooking(15, this.value, this.type, this.dateRange, this.description, null);
     }
 
     @Test
     public void testConstructorDayOfWeek() {
-        WeeklyBooking booking = new WeeklyBooking( 6, this.value, this.type, this.dateRange, this.description, this.de);
+        WeeklyBooking booking = new WeeklyBooking(6, this.value, this.type, this.dateRange, this.description, this.de);
         assertEquals(6, booking.getDayOfWeek());
     }
 }
