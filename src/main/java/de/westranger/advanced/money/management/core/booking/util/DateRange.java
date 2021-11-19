@@ -31,8 +31,4 @@ public final class DateRange {
     public String toString() {
         return "DateRange(from:" + (new Date(this.startDate)) + " to:" + (new Date(this.startDate)) + ")";
     }
-
-    public static DateRange fromRepetition(final long startDate, final int repetition) {
-        throw new RuntimeException("Not yet Implemented");
-    }
 }

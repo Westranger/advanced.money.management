@@ -39,7 +39,7 @@ public final class SingleBookingTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeRepetition() {
-        Booking booking = new SingleBooking(-6, this.date.getTime(), Double.POSITIVE_INFINITY, this.type, this.dateRange, this.description, this.de);
+        Booking booking = new SingleBooking(-6, this.date.getTime(), 5.99, this.type, this.dateRange, this.description, this.de);
     }
 
     @Test(expected = IllegalArgumentException.class)

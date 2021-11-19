@@ -6,9 +6,11 @@ import de.westranger.advanced.money.management.core.booking.enums.Numerator;
 import de.westranger.advanced.money.management.core.booking.enums.BookingType;
 import de.westranger.advanced.money.management.core.booking.util.DateExclusion;
 import de.westranger.advanced.money.management.core.booking.util.DateRange;
-import de.westranger.advanced.money.management.core.booking.util.Triple;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public final class QuarterBookingDayOfWeek extends MonthlyBookingDayOfWeek {
 
@@ -34,7 +36,7 @@ public final class QuarterBookingDayOfWeek extends MonthlyBookingDayOfWeek {
     }
 
     @Override
-    public List<Triple<Date, BookingType, Double>> inflate() {
+    public List<InflatedBooking> inflate() {
         throw new RuntimeException("Not yet Implemented");
     }
 }
